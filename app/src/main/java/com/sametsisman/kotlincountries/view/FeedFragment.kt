@@ -43,7 +43,7 @@ class FeedFragment : Fragment() {
             recyclerView.visibility = View.GONE
             errorText.visibility = View.GONE
             countryLoading.visibility = View.INVISIBLE
-            viewModel.refreshData()
+            viewModel.refreshFromAPI()
 
             swipeRefreshLayout.isRefreshing = false
         }
