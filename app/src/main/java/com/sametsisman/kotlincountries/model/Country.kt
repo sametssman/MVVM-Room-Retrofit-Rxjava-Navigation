@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName
 @Entity
 data class Country(
 
-    @PrimaryKey(autoGenerate = true)
-    var uuid : Int = 0,
-
     @ColumnInfo(name = "countryName")
     @SerializedName("name")
     val countryName : String?,
@@ -33,5 +30,10 @@ data class Country(
 
     @ColumnInfo(name = "countryImage")
     @SerializedName("flag")
-    val imageurl : String?)
+    val imageurl : String?) {
+
+    @PrimaryKey(autoGenerate = true)
+    var uuid : Int = 0
+
+}
 

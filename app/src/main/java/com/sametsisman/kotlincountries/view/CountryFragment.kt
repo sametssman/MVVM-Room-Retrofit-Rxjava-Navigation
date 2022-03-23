@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_country.*
 class CountryFragment : Fragment() {
     private lateinit var viewModel : CountryViewModel
     private var countryId = 0
+    private lateinit var dataBinding: FragmentCountryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -28,7 +29,8 @@ class CountryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_country, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_country,container,false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +51,9 @@ class CountryFragment : Fragment() {
         viewModel.countryLiveData.observe(viewLifecycleOwner, Observer { country->
             country?.let {
 
+                dataBinding.selectedCountry = country
+
+                /*
                 country_name.text = country.countryName
                 country_capital.text = country.countryCapital
                 country_currency.text = country.countryCurrency
@@ -56,7 +61,8 @@ class CountryFragment : Fragment() {
                 country_region.text = country.countryRegion
                 context?.let {
                     country_image.downloadFromUrl(country.imageurl, placeholderProgressBar(it))
-                }
+
+                 */
             }
         })
     }
